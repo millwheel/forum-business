@@ -23,6 +23,8 @@ class CommonLargeButton extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
+        minimumSize: Size.zero,
+        padding: EdgeInsets.all(0),
       ),
       child: SizedBox(
         width: 300,

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:forum_mobile/common_button.dart';
+import 'package:forum_mobile/head_space.dart';
+import 'package:forum_mobile/input_box.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late SharedPreferences preferences;
@@ -64,9 +66,7 @@ class _OnBoardingState extends State<OnBoarding> {
           width: double.infinity,
           child: Column(
             children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.2,
-              ),
+              HeadSpace(),
               AnimatedOpacity(
                 opacity: _opacity,
                 duration: const Duration(seconds: 2),
@@ -126,9 +126,6 @@ class HomePage extends StatelessWidget {
           Center(
             child: Text("home"),
           ),
-          BackButton(
-            onPressed: () {},
-          ),
         ],
       ),
     );
@@ -146,10 +143,31 @@ class LoginPage extends StatelessWidget {
           width: double.infinity,
           child: Column(
             children: [
+              HeadSpace(),
+              Center(
+                child: Text(
+                  "Login",
+                  style: TextStyle(fontSize: 30),
+                ),
+              ),
+              SizedBox(
+                height: 36,
+              ),
+              OutlinedButton(
+                onPressed: () {},
+                child: Text("Google login"),
+              ),
+              CommonInputBox(
+                width: 300,
+                text: "password",
+              ),
               const Spacer(),
-              CommonLargeButton(
-                text: "뒤로가기",
-                onPressed: () => Navigator.pop(context),
+              Padding(
+                padding: EdgeInsets.only(bottom: 60),
+                child: CommonLargeButton(
+                  text: "뒤로가기",
+                  onPressed: () => Navigator.pop(context),
+                ),
               )
             ],
           ),
@@ -170,10 +188,24 @@ class JoinPage extends StatelessWidget {
           width: double.infinity,
           child: Column(
             children: [
+              HeadSpace(),
+              Center(
+                child: Text(
+                  "Join",
+                  style: TextStyle(fontSize: 30),
+                ),
+              ),
+              CommonInputBox(
+                width: 300,
+                text: "password",
+              ),
               const Spacer(),
-              CommonLargeButton(
-                text: "뒤로가기",
-                onPressed: () => Navigator.pop(context),
+              Padding(
+                padding: EdgeInsets.only(bottom: 60),
+                child: CommonLargeButton(
+                  text: "뒤로가기",
+                  onPressed: () => Navigator.pop(context),
+                ),
               )
             ],
           ),
