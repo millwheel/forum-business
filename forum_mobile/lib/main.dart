@@ -85,7 +85,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 child: Column(
                   children: [
                     CommonElevatedButton(
-                      text: "로그인",
+                      text: "Login",
                       onPressed: () {
                         Navigator.push(
                           context,
@@ -97,7 +97,7 @@ class _OnBoardingState extends State<OnBoarding> {
                       height: 20,
                     ),
                     CommonElevatedButton(
-                      text: "회원가입",
+                      text: "Join",
                       onPressed: () {
                         Navigator.push(
                           context,

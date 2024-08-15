@@ -11,6 +11,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SafeArea(
         child: SizedBox(
           width: double.infinity,
@@ -37,11 +38,18 @@ class LoginPage extends StatelessWidget {
                 text: "Kakao login",
                 onPressed: () {},
               ),
+              SizedBox(
+                height: 20,
+              ),
+              CommonOutlinedButton(
+                text: "Email login",
+                onPressed: () {},
+              ),
               const Spacer(),
               Padding(
                 padding: EdgeInsets.only(bottom: 60),
                 child: CommonElevatedButton(
-                  text: "뒤로가기",
+                  text: "Go back",
                   onPressed: () => Navigator.pop(context),
                 ),
               )
