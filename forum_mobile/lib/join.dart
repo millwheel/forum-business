@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'component/common_button.dart';
+import 'component/common_elevated_button.dart';
 import 'component/input_box.dart';
 import 'component/head_space.dart';
 
@@ -29,7 +29,7 @@ class JoinPage extends StatelessWidget {
               const Spacer(),
               Padding(
                 padding: EdgeInsets.only(bottom: 60),
-                child: CommonLargeButton(
+                child: CommonElevatedButton(
                   text: "뒤로가기",
                   onPressed: () => Navigator.pop(context),
                 ),

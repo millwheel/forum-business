@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'component/common_button.dart';
+import 'component/common_elevated_button.dart';
 import 'component/head_space.dart';
 
 import 'join.dart';
@@ -84,7 +84,7 @@ class _OnBoardingState extends State<OnBoarding> {
                 padding: EdgeInsets.only(bottom: 60),
                 child: Column(
                   children: [
-                    CommonLargeButton(
+                    CommonElevatedButton(
                       text: "로그인",
                       onPressed: () {
                         Navigator.push(
@@ -96,7 +96,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     SizedBox(
                       height: 20,
                     ),
-                    CommonLargeButton(
+                    CommonElevatedButton(
                       text: "회원가입",
                       onPressed: () {
                         Navigator.push(

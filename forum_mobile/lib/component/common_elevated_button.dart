@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class CommonLargeButton extends StatelessWidget {
+class CommonElevatedButton extends StatelessWidget {
   final String text;
   final Color fontColor;
   final Color backgroundColor;
   final VoidCallback onPressed;
 
-  const CommonLargeButton({
+  const CommonElevatedButton({
     super.key,
     required this.text,
     required this.onPressed,

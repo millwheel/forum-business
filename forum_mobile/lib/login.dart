@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:forum_mobile/component/common_outlined_button.dart';
 
-import 'component/common_button.dart';
+import 'component/common_elevated_button.dart';
 import 'component/input_box.dart';
 import 'component/head_space.dart';
 
@@ -25,18 +26,21 @@ class LoginPage extends StatelessWidget {
               SizedBox(
                 height: 36,
               ),
-              OutlinedButton(
+              CommonOutlinedButton(
+                text: "Google login",
                 onPressed: () {},
-                child: Text("Google login"),
               ),
-              CommonInputBox(
-                width: 300,
-                text: "password",
+              SizedBox(
+                height: 20,
+              ),
+              CommonOutlinedButton(
+                text: "Kakao login",
+                onPressed: () {},
               ),
               const Spacer(),
               Padding(
                 padding: EdgeInsets.only(bottom: 60),
-                child: CommonLargeButton(
+                child: CommonElevatedButton(
                   text: "뒤로가기",
                   onPressed: () => Navigator.pop(context),
                 ),
