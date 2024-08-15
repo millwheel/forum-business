@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:forum_mobile/common_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 late SharedPreferences preferences;
@@ -80,55 +81,29 @@ class _OnBoardingState extends State<OnBoarding> {
                 padding: EdgeInsets.only(bottom: 60),
                 child: Column(
                   children: [
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white70,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: SizedBox(
-                        width: 300, // Set a fixed width
-                        height: 60, // Set a fixed height
-                        child: Center(
-                          child: Text(
-                            "로그인",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.pink,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
+                    CommonLargeButton(
+                      text: "로그인",
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
+                      },
                     ),
                     SizedBox(
                       height: 20,
                     ),
-                    ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.pink,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
-                      child: SizedBox(
-                        width: 300, // Set a fixed width
-                        height: 60, // Set a fixed height
-                        child: Center(
-                          child: Text(
-                            "회원가입",
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
+                    CommonLargeButton(
+                      text: "회원가입",
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => JoinPage()),
+                        );
+                      },
+                      fontColor: Colors.white,
+                      backgroundColor: Colors.black,
+                    ),
                   ],
                 ),
               )
@@ -146,8 +121,63 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text("home"),
+      body: Column(
+        children: [
+          Center(
+            child: Text("home"),
+          ),
+          BackButton(
+            onPressed: () {},
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class LoginPage extends StatelessWidget {
+  const LoginPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              const Spacer(),
+              CommonLargeButton(
+                text: "뒤로가기",
+                onPressed: () => Navigator.pop(context),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class JoinPage extends StatelessWidget {
+  const JoinPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              const Spacer(),
+              CommonLargeButton(
+                text: "뒤로가기",
+                onPressed: () => Navigator.pop(context),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }
