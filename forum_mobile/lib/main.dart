@@ -92,6 +92,7 @@ class _OnBoardingState extends State<OnBoarding> {
                           MaterialPageRoute(builder: (context) => LoginPage()),
                         );
                       },
+                      backgroundColor: Colors.lightBlue,
                     ),
                     SizedBox(
                       height: 20,

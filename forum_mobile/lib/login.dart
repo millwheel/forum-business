@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:forum_mobile/component/common_outlined_button.dart';
 
 import 'component/common_elevated_button.dart';
-import 'component/input_box.dart';
 import 'component/head_space.dart';
 
 class LoginPage extends StatelessWidget {
