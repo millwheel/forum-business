@@ -28,19 +28,19 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: HomePage(),
+      home: isOnboarded ? HomePage() : OnBoarding(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class OnBoarding extends StatefulWidget {
+  const OnBoarding({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<OnBoarding> createState() => _OnBoardingState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _OnBoardingState extends State<OnBoarding> {
   double _opacity = 0.0;
 
   @override
@@ -58,15 +58,96 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
-        child: AnimatedOpacity(
-          opacity: _opacity,
-          duration: const Duration(seconds: 2),
-          child: Text(
-            "Make a friend who is reliable.",
-            style: TextStyle(fontSize: 24),
+      body: SafeArea(
+        child: SizedBox(
+          width: double.infinity,
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.2,
+              ),
+              AnimatedOpacity(
+                opacity: _opacity,
+                duration: const Duration(seconds: 2),
+                child: Text(
+                  textAlign: TextAlign.center,
+                  "Make a friend who is reliable.",
+                  style: TextStyle(fontSize: 26),
+                ),
+              ),
+              const Spacer(),
+              Padding(
+                padding: EdgeInsets.only(bottom: 60),
+                child: Column(
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.white70,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: SizedBox(
+                        width: 300, // Set a fixed width
+                        height: 60, // Set a fixed height
+                        child: Center(
+                          child: Text(
+                            "로그인",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.pink,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.pink,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      child: SizedBox(
+                        width: 300, // Set a fixed width
+                        height: 60, // Set a fixed height
+                        child: Center(
+                          child: Text(
+                            "회원가입",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              )
+            ],
           ),
         ),
+      ),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text("home"),
       ),
     );
   }
