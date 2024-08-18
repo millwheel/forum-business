@@ -161,6 +161,9 @@ class HomePage extends StatelessWidget {
               text: '로그아웃',
               onPressed: () {
                 context.read<AuthService>().signOut();
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text("Log out Success"),
+                ));
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => OnBoarding()),

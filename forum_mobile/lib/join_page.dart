@@ -94,7 +94,7 @@ class _EmailJoinPageState extends State<EmailJoinPage> {
                 children: [
                   TopSpace(),
                   Text(
-                    "이메일로 회원가입",
+                    "Join with Email",
                     style: TextStyle(fontSize: 28),
                   ),
                   SizedBox(height: 45),
@@ -103,7 +103,7 @@ class _EmailJoinPageState extends State<EmailJoinPage> {
                     height: 60,
                     child: TextField(
                       controller: emailController,
-                      decoration: InputDecoration(hintText: "이메일"),
+                      decoration: InputDecoration(hintText: "Email"),
                       style: TextStyle(color: Colors.black, fontSize: 22),
                     ),
                   ),
@@ -113,7 +113,7 @@ class _EmailJoinPageState extends State<EmailJoinPage> {
                     child: TextField(
                       controller: passwordController,
                       obscureText: true,
-                      decoration: InputDecoration(hintText: "비밀번호"),
+                      decoration: InputDecoration(hintText: "Password"),
                       style: TextStyle(color: Colors.black, fontSize: 22),
                     ),
                   ),
@@ -123,7 +123,7 @@ class _EmailJoinPageState extends State<EmailJoinPage> {
                     child: TextField(
                       controller: passwordConfirmController,
                       obscureText: true,
-                      decoration: InputDecoration(hintText: "비밀번호 재입력"),
+                      decoration: InputDecoration(hintText: "Password Confirm"),
                       style: TextStyle(color: Colors.black, fontSize: 22),
                     ),
                   ),
@@ -131,7 +131,7 @@ class _EmailJoinPageState extends State<EmailJoinPage> {
                     height: 60,
                   ),
                   CommonElevatedButton(
-                    text: "회원가입",
+                    text: "Join!",
                     onPressed: () {
                       authService.signUp(
                         email: emailController.text,
@@ -139,7 +139,7 @@ class _EmailJoinPageState extends State<EmailJoinPage> {
                         passwordConfirm: passwordConfirmController.text,
                         onSuccess: () {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text("회원가입 성공"),
+                            content: Text("Sign up success"),
                           ));
                           Navigator.pushReplacement(
                             context,

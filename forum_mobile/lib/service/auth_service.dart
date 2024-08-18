@@ -14,15 +14,16 @@ class AuthService extends ChangeNotifier {
     required Function(String err) onError,
   }) async {
     if (email.isEmpty) {
-      onError('이메일을 입력해주세요.');
+      onError('Enter the email.');
       return;
     } else if (password.isEmpty) {
-      onError('비밀번호를 입력해주세요.');
+      onError('Enter the password.');
       return;
     }
 
     if (password != passwordConfirm) {
-      onError('비밀번호가 서로 일치하지 않습니다. 동일한 비밀번호를 입력해주세요.');
+      onError(
+          'Those passwords are not matched. Please enter same password & confirmation');
       return;
     }
 
@@ -35,15 +36,15 @@ class AuthService extends ChangeNotifier {
       onSuccess();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
-        onError('비밀번호를 6자리 이상 입력해 주세요.');
+        onError('Password should be longer than 6.');
       } else if (e.code == 'email-already-in-use') {
-        onError('이미 가입된 이메일 입니다.');
+        onError('This email was already used for account.');
       } else if (e.code == 'invalid-email') {
-        onError('이메일 형식을 확인해주세요.');
+        onError('Check the email form.');
       } else if (e.code == 'user-not-found') {
-        onError('일치하는 이메일이 없습니다.');
+        onError('There is no user with the email.');
       } else if (e.code == 'wrong-password') {
-        onError('비밀번호가 일치하지 않습니다.');
+        onError('Wrong password.');
       } else {
         onError(e.message!);
       }
@@ -59,10 +60,10 @@ class AuthService extends ChangeNotifier {
     required Function(String err) onError,
   }) async {
     if (email.isEmpty) {
-      onError('이메일을 입력해주세요.');
+      onError('Enter the email');
       return;
     } else if (password.isEmpty) {
-      onError('비밀번호를 입력해주세요.');
+      onError('Enter the password');
       return;
     }
 

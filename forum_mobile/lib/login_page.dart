@@ -87,24 +87,25 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
         return Scaffold(
           backgroundColor: Colors.white,
           body: SafeArea(
-            child: SizedBox(
-              width: double.infinity,
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   TopSpace(),
                   Text(
-                    "이메일로 로그인",
+                    "Login with Email",
                     style: TextStyle(fontSize: 30),
                   ),
-                  SizedBox(height: 45),
+                  SizedBox(
+                    height: 30,
+                  ),
                   SizedBox(
                     width: 300,
                     height: 60,
                     child: TextField(
                       controller: emailController,
-                      decoration: InputDecoration(hintText: "이메일"),
+                      decoration: InputDecoration(hintText: "Email"),
                       style: TextStyle(color: Colors.black, fontSize: 22),
                     ),
                   ),
@@ -113,23 +114,23 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
                     height: 60,
                     child: TextField(
                       controller: passwordController,
-                      obscureText: false, // 비밀번호 안보이게
-                      decoration: InputDecoration(hintText: "비밀번호"),
+                      obscureText: true, // 비밀번호 안보이게
+                      decoration: InputDecoration(hintText: "Password"),
                       style: TextStyle(color: Colors.black, fontSize: 22),
                     ),
                   ),
                   SizedBox(
-                    height: 60,
+                    height: 30,
                   ),
                   CommonElevatedButton(
-                    text: "로그인",
+                    text: "Login",
                     onPressed: () {
                       authService.signIn(
                         email: emailController.text,
                         password: passwordController.text,
                         onSuccess: () {
                           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                            content: Text("로그인 성공"),
+                            content: Text("Login Success"),
                           ));
                           Navigator.pushReplacement(
                             context,
@@ -145,7 +146,9 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
                     },
                     backgroundColor: Colors.blue,
                   ),
-                  Spacer(),
+                  SizedBox(
+                    height: 100,
+                  ),
                   CommonElevatedButton(
                     text: "Go back",
                     onPressed: () => Navigator.pop(context),
