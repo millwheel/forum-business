@@ -9,6 +9,7 @@ class AuthService extends ChangeNotifier {
   void signUp({
     required String email,
     required String password,
+    required String passwordConfirm,
     required Function() onSuccess,
     required Function(String err) onError,
   }) async {
@@ -17,6 +18,11 @@ class AuthService extends ChangeNotifier {
       return;
     } else if (password.isEmpty) {
       onError('비밀번호를 입력해주세요.');
+      return;
+    }
+
+    if (password != passwordConfirm) {
+      onError('비밀번호가 서로 일치하지 않습니다. 동일한 비밀번호를 입력해주세요.');
       return;
     }
 

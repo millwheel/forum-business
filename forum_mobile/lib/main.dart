@@ -48,7 +48,7 @@ class MyApp extends StatelessWidget {
     User? user = context.read<AuthService>().currentUser();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Forum app',
       theme: ThemeData(
         useMaterial3: true,
       ),
@@ -89,7 +89,7 @@ class _OnBoardingState extends State<OnBoarding> {
               width: double.infinity,
               child: Column(
                 children: [
-                  HeadSpace(),
+                  TopSpace(),
                   AnimatedOpacity(
                     opacity: _opacity,
                     duration: const Duration(seconds: 2),
@@ -146,12 +146,17 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Center(
-            child: Text("home"),
-          ),
-        ],
+      body: SafeArea(
+        child: Column(
+          children: [
+            Center(
+              child: Text(
+                "home",
+                style: TextStyle(fontSize: 28),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
