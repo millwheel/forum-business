@@ -24,7 +24,7 @@ class JoinPage extends StatelessWidget {
               Center(
                 child: Text(
                   "Join",
-                  style: TextStyle(fontSize: 30, color: Colors.black),
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
                 ),
               ),
               SizedBox(
@@ -86,18 +86,17 @@ class _EmailJoinPageState extends State<EmailJoinPage> {
         return Scaffold(
           backgroundColor: Colors.white,
           body: SafeArea(
-            child: SizedBox(
-              width: double.infinity,
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   TopSpace(),
                   Text(
                     "Join with Email",
-                    style: TextStyle(fontSize: 28),
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
                   ),
-                  SizedBox(height: 45),
+                  SizedBox(height: 30),
                   SizedBox(
                     width: 300,
                     height: 60,
@@ -128,7 +127,7 @@ class _EmailJoinPageState extends State<EmailJoinPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 60,
+                    height: 50,
                   ),
                   CommonElevatedButton(
                     text: "Join!",
@@ -155,7 +154,9 @@ class _EmailJoinPageState extends State<EmailJoinPage> {
                     },
                     backgroundColor: Colors.blue,
                   ),
-                  Spacer(),
+                  SizedBox(
+                    height: 100,
+                  ),
                   CommonElevatedButton(
                     text: "Go back",
                     onPressed: () => Navigator.pop(context),

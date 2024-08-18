@@ -24,7 +24,7 @@ class LoginPage extends StatelessWidget {
               Center(
                 child: Text(
                   "Login",
-                  style: TextStyle(fontSize: 30),
+                  style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
                 ),
               ),
               SizedBox(
@@ -95,7 +95,7 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
                   TopSpace(),
                   Text(
                     "Login with Email",
-                    style: TextStyle(fontSize: 30),
+                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.w500),
                   ),
                   SizedBox(
                     height: 30,
@@ -120,7 +120,7 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 30,
+                    height: 50,
                   ),
                   CommonElevatedButton(
                     text: "Login",
@@ -147,7 +147,7 @@ class _EmailLoginPageState extends State<EmailLoginPage> {
                     backgroundColor: Colors.blue,
                   ),
                   SizedBox(
-                    height: 100,
+                    height: 120,
                   ),
                   CommonElevatedButton(
                     text: "Go back",
