@@ -1,6 +1,10 @@
 import 'dart:async';
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:forum_mobile/component/bottom_space.dart';
+import 'package:forum_mobile/service/auth_service.dart';
+import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -8,8 +12,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'component/common_elevated_button.dart';
 import 'component/head_space.dart';
 
-import 'join.dart';
-import 'login.dart';
+import 'join_page.dart';
+import 'login_page.dart';
 
 late SharedPreferences preferences;
 
@@ -21,12 +25,19 @@ void main() async {
   // 기기에 파일로 정보를 저장하는 방법
   preferences = await SharedPreferences.getInstance();
 
-  // firebase setting
+  // firebase app start
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => AuthService()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -34,14 +45,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isOnboarded = preferences.getBool("isOnboarded") ?? false;
+    User? user = context.read<AuthService>().currentUser();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: isOnboarded ? HomePage() : OnBoarding(),
+      home: user == null ? OnBoarding() : HomePage(),
     );
   }
 }
@@ -69,59 +80,62 @@ class _OnBoardingState extends State<OnBoarding> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: SafeArea(
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(
-            children: [
-              HeadSpace(),
-              AnimatedOpacity(
-                opacity: _opacity,
-                duration: const Duration(seconds: 2),
-                child: Text(
-                  textAlign: TextAlign.center,
-                  "Make a friend who is reliable.",
-                  style: TextStyle(fontSize: 26),
-                ),
+    return Consumer<AuthService>(
+      builder: (context, authService, child) {
+        return Scaffold(
+          backgroundColor: Colors.white,
+          body: SafeArea(
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                children: [
+                  HeadSpace(),
+                  AnimatedOpacity(
+                    opacity: _opacity,
+                    duration: const Duration(seconds: 2),
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      "Make a friend who is reliable.",
+                      style: TextStyle(fontSize: 26),
+                    ),
+                  ),
+                  const Spacer(),
+                  Column(
+                    children: [
+                      CommonElevatedButton(
+                        text: "Login",
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => LoginPage()),
+                          );
+                        },
+                        backgroundColor: Colors.lightBlue,
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      CommonElevatedButton(
+                        text: "Join",
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => JoinPage()),
+                          );
+                        },
+                        fontColor: Colors.white,
+                        backgroundColor: Colors.black,
+                      ),
+                    ],
+                  ),
+                  BottomSpace(),
+                ],
               ),
-              const Spacer(),
-              Padding(
-                padding: EdgeInsets.only(bottom: 60),
-                child: Column(
-                  children: [
-                    CommonElevatedButton(
-                      text: "Login",
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
-                        );
-                      },
-                      backgroundColor: Colors.lightBlue,
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    CommonElevatedButton(
-                      text: "Join",
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => JoinPage()),
-                        );
-                      },
-                      fontColor: Colors.white,
-                      backgroundColor: Colors.black,
-                    ),
-                  ],
-                ),
-              )
-            ],
+            ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }

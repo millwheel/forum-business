@@ -10,16 +10,16 @@ class CommonOutlinedButton extends StatelessWidget {
   const CommonOutlinedButton({
     super.key,
     required this.text,
+    required this.onPressed,
     this.fontColor = Colors.indigo,
     this.backgroundColor = Colors.white,
-    required this.onPressed,
     this.image,
   });
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: () {},
+      onPressed: onPressed,
       style: OutlinedButton.styleFrom(
         backgroundColor: backgroundColor,
         shape: RoundedRectangleBorder(
