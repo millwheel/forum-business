@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -18,6 +20,11 @@ void main() async {
   // shared_preferences 인스턴스 생성
   // 기기에 파일로 정보를 저장하는 방법
   preferences = await SharedPreferences.getInstance();
+
+  // firebase setting
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const MyApp());
 }
