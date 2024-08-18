@@ -149,12 +149,25 @@ class HomePage extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
+            TopSpace(),
             Center(
               child: Text(
                 "home",
                 style: TextStyle(fontSize: 28),
               ),
             ),
+            Spacer(),
+            CommonElevatedButton(
+              text: '로그아웃',
+              onPressed: () {
+                context.read<AuthService>().signOut();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => OnBoarding()),
+                );
+              },
+            ),
+            BottomSpace(),
           ],
         ),
       ),
