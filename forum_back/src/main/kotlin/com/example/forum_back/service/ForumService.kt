@@ -1,5 +1,6 @@
 package com.example.forum_back.service
 
+import com.example.forum_back.dto.ForumRequestDto
 import com.example.forum_back.entity.Forum
 import com.example.forum_back.repository.ForumRepository
 import org.springframework.stereotype.Service
@@ -21,8 +22,8 @@ class ForumService (
     }
 
     @Transactional
-    fun addForum(title: String, description: String, author: String, category: String) {
-        val newForum = Forum.createNewForum(title, description, author, category)
+    fun addForum(forumRequestDto: ForumRequestDto) {
+        val newForum = Forum.createNewForum(forumRequestDto.title, forumRequestDto.description, forumRequestDto.author)
         forumRepository.save(newForum)
     }
 

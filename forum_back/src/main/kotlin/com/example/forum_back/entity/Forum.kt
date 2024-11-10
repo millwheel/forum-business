@@ -13,15 +13,13 @@ class Forum protected constructor() {
     lateinit var title: String
     lateinit var description: String
     lateinit var author: String
-    lateinit var category: String
 
     companion object {
-        fun createNewForum(title: String, description: String, author: String, category: String): Forum {
+        fun createNewForum(title: String, description: String, author: String): Forum {
             return Forum().apply {
                 this.title = title
                 this.description = description
                 this.author = author
-                this.category = category
             }
         }
     }
