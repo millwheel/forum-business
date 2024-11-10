@@ -1,0 +1,27 @@
+spring:
+  config:
+    activate:
+      on-profile: local
+    import:
+      - optional:file:env/local.env[.properties]
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/forum
+    username: admin
+    password: 1234
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+        default_batch_fetch_size: 100
+        time_zone: UTC
+        default_schema: public
+
+logging:
+  level:
+    root: info
+    org.hibernate.SQL: trace
+    org.hibernate.type: trace
