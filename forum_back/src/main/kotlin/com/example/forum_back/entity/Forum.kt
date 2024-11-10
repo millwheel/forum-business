@@ -1,26 +1,25 @@
 package com.example.forum_back.entity
 
-import jakarta.persistence.Entity
-import jakarta.persistence.Id
-import jakarta.persistence.Table
+import jakarta.persistence.*
 
 @Entity
 @Table(name = "forum")
-class Forum protected constructor() {
-
+class Forum(
     @Id
-    var id: Long? = null
-    lateinit var title: String
-    lateinit var description: String
-    lateinit var author: String
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long? = null,
+    var title: String,
+    var description: String,
+    var author: String
+) {
     companion object {
         fun createNewForum(title: String, description: String, author: String): Forum {
-            return Forum().apply {
-                this.title = title
-                this.description = description
-                this.author = author
-            }
+            return Forum(
+                title = title,
+                description = description,
+                author = author
+            )
         }
     }
+
 }
