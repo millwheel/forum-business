@@ -5,7 +5,7 @@ import jakarta.persistence.GenerationType.*
 
 @Entity
 @Table(name = "forum")
-class Forum (
+class Forum constructor(
     var title: String,
     var description: String,
     var author: String,
