@@ -1,24 +1,22 @@
 package com.example.forum_back.entity
 
 import jakarta.persistence.*
+import jakarta.persistence.GenerationType.*
 
 @Entity
 @Table(name = "forum")
 class Forum(
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id: Long? = null,
     var title: String,
     var description: String,
-    var author: String
+    var author: String,
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    val id: Long? = null
 ) {
-    companion object {
-        fun createNewForum(title: String, description: String, author: String): Forum {
-            return Forum(
-                title = title,
-                description = description,
-                author = author
-            )
+
+    init {
+        if (title.isBlank()) {
+            throw IllegalArgumentException("title cannot be blank")
         }
     }
 

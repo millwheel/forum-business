@@ -23,7 +23,7 @@ class ForumService (
 
     @Transactional
     fun addForum(forumRequestDto: ForumRequestDto) {
-        val newForum = Forum.createNewForum(forumRequestDto.title, forumRequestDto.description, forumRequestDto.author)
+        val newForum = Forum(forumRequestDto.title, forumRequestDto.description, forumRequestDto.author)
         forumRepository.save(newForum)
     }
 
