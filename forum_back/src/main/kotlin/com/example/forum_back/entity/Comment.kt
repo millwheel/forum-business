@@ -11,11 +11,17 @@ class Comment (
     var description: String,
     var author: String,
     val forumId: Long,
+    var imageId: Long?,
     @Id
     @GeneratedValue(strategy = IDENTITY)
     val id: Long? = null
 ) {
+
     fun updateComment(commentUpdateRequest: CommentUpdateRequest){
         description = commentUpdateRequest.description
+    }
+
+    fun updateImage(imageId: Long){
+        this.imageId = imageId
     }
 }
