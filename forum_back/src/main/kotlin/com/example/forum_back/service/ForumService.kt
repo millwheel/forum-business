@@ -4,6 +4,10 @@ import com.example.forum_back.dto.ForumCreateRequestDto
 import com.example.forum_back.dto.ForumUpdateRequestDto
 import com.example.forum_back.entity.Forum
 import com.example.forum_back.repository.ForumRepository
+import com.example.forum_back.util.fail
+import com.example.forum_back.util.findByIdOrThrow
+import org.aspectj.bridge.MessageUtil.fail
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -18,8 +22,7 @@ class ForumService (
     }
 
     fun getForumById(forumId : Long) : Forum {
-        return forumRepository.findById(forumId)
-            .orElseThrow{ RuntimeException("The forum $forumId does not exist") }
+        return forumRepository.findByIdOrThrow(forumId)
     }
 
     fun getForumByAuthor(author: String) : List<Forum> {
@@ -34,8 +37,7 @@ class ForumService (
 
     @Transactional
     fun updateForum(forumId: Long, forumUpdateRequestDto: ForumUpdateRequestDto) {
-        val forum = forumRepository.findById(forumId)
-            .orElseThrow { RuntimeException("The forum $forumId does not exist") }
+        val forum = forumRepository.findByIdOrThrow(forumId)
         forum.updateForum(forumUpdateRequestDto)
     }
 
