@@ -1,6 +1,7 @@
 package com.example.forum_back.controller
 
-import com.example.forum_back.dto.ForumRequestDto
+import com.example.forum_back.dto.ForumCreateRequestDto
+import com.example.forum_back.dto.ForumUpdateRequestDto
 import com.example.forum_back.entity.Forum
 import com.example.forum_back.service.ForumService
 import org.springframework.http.HttpStatus
@@ -27,8 +28,15 @@ class ForumController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createForum(@RequestBody forumRequestDto: ForumRequestDto) {
-        forumService.addForum(forumRequestDto)
+    fun createForum(@RequestBody forumCreateRequestDto: ForumCreateRequestDto) {
+        forumService.createForum(forumCreateRequestDto)
+    }
+
+    @PutMapping("/{forumId}")
+    @ResponseStatus(HttpStatus.OK)
+    fun updateForum(@PathVariable forumId: Long,
+                    @RequestBody forumUpdateRequestDto: ForumUpdateRequestDto) {
+        forumService.updateForum(forumId, forumUpdateRequestDto)
     }
 
     @DeleteMapping("/{forumId}")

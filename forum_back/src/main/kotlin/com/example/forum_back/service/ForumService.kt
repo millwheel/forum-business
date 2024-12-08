@@ -1,6 +1,7 @@
 package com.example.forum_back.service
 
-import com.example.forum_back.dto.ForumRequestDto
+import com.example.forum_back.dto.ForumCreateRequestDto
+import com.example.forum_back.dto.ForumUpdateRequestDto
 import com.example.forum_back.entity.Forum
 import com.example.forum_back.repository.ForumRepository
 import org.springframework.stereotype.Service
@@ -18,13 +19,20 @@ class ForumService (
 
     fun getForumById(forumId : Long) : Forum {
         return forumRepository.findById(forumId)
-            .orElseThrow{ RuntimeException("The forum ${forumId} does not exist") }
+            .orElseThrow{ RuntimeException("The forum $forumId does not exist") }
     }
 
     @Transactional
-    fun addForum(forumRequestDto: ForumRequestDto) {
-        val newForum = Forum(forumRequestDto.title, forumRequestDto.description, forumRequestDto.author)
+    fun createForum(forumCreateRequestDto: ForumCreateRequestDto) {
+        val newForum = Forum(forumCreateRequestDto.title, forumCreateRequestDto.description, forumCreateRequestDto.author)
         forumRepository.save(newForum)
+    }
+
+    @Transactional
+    fun updateForum(forumId: Long, forumUpdateRequestDto: ForumUpdateRequestDto) {
+        val forum = forumRepository.findById(forumId)
+            .orElseThrow { RuntimeException("The forum $forumId does not exist") }
+        forum.updateForum(forumUpdateRequestDto)
     }
 
     @Transactional

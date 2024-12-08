@@ -1,5 +1,6 @@
 package com.example.forum_back.entity
 
+import com.example.forum_back.dto.ForumUpdateRequestDto
 import jakarta.persistence.*
 import jakarta.persistence.GenerationType.*
 
@@ -18,6 +19,11 @@ class Forum constructor(
         if (title.isBlank()) {
             throw IllegalArgumentException("title cannot be blank")
         }
+    }
+
+    fun updateForum(forumUpdateRequestDto: ForumUpdateRequestDto){
+        this.title = forumUpdateRequestDto.title;
+        this.description = forumUpdateRequestDto.description;
     }
 
 }
