@@ -1,7 +1,8 @@
 package com.example.forum_back.controller
 
-import com.example.forum_back.dto.ForumCreateRequestDto
-import com.example.forum_back.dto.ForumUpdateRequestDto
+import com.example.forum_back.dto.ForumCreateRequest
+import com.example.forum_back.dto.ForumResponse
+import com.example.forum_back.dto.ForumUpdateRequest
 import com.example.forum_back.entity.Forum
 import com.example.forum_back.service.ForumService
 import org.springframework.http.HttpStatus
@@ -16,27 +17,30 @@ class ForumController(
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    fun getAllForums(): List<Forum> {
-        return forumService.getAllForums()
+    fun getAllForums(): List<ForumResponse> {
+        val allForums = forumService.getAllForums()
+        val forumResponses = allForums.stream().map { forum -> ForumResponse.of(forum) }.toList()
+        return forumResponses
     }
 
     @GetMapping("/{forumId}")
     @ResponseStatus(HttpStatus.OK)
-    fun getForumById(@PathVariable forumId: Long): Forum {
-        return forumService.getForumById(forumId)
+    fun getForumById(@PathVariable forumId: Long): ForumResponse {
+        val forum = forumService.getForumById(forumId)
+        return ForumResponse.of(forum)
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createForum(@RequestBody forumCreateRequestDto: ForumCreateRequestDto) {
-        forumService.createForum(forumCreateRequestDto)
+    fun createForum(@RequestBody forumCreateRequest: ForumCreateRequest) {
+        forumService.createForum(forumCreateRequest)
     }
 
     @PutMapping("/{forumId}")
     @ResponseStatus(HttpStatus.OK)
     fun updateForum(@PathVariable forumId: Long,
-                    @RequestBody forumUpdateRequestDto: ForumUpdateRequestDto) {
-        forumService.updateForum(forumId, forumUpdateRequestDto)
+                    @RequestBody forumUpdateRequest: ForumUpdateRequest) {
+        forumService.updateForum(forumId, forumUpdateRequest)
     }
 
     @DeleteMapping("/{forumId}")

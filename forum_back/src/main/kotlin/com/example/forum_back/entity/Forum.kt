@@ -1,6 +1,6 @@
 package com.example.forum_back.entity
 
-import com.example.forum_back.dto.ForumUpdateRequestDto
+import com.example.forum_back.dto.ForumUpdateRequest
 import jakarta.persistence.*
 import jakarta.persistence.GenerationType.*
 
@@ -21,9 +21,9 @@ class Forum constructor(
         }
     }
 
-    fun updateForum(forumUpdateRequestDto: ForumUpdateRequestDto){
-        this.title = forumUpdateRequestDto.title;
-        this.description = forumUpdateRequestDto.description;
+    fun updateForum(forumUpdateRequest: ForumUpdateRequest){
+        this.title = forumUpdateRequest.title;
+        this.description = forumUpdateRequest.description;
     }
 
 }

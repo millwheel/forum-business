@@ -1,7 +1,7 @@
 package com.example.forum_back.service
 
-import com.example.forum_back.dto.ForumCreateRequestDto
-import com.example.forum_back.dto.ForumUpdateRequestDto
+import com.example.forum_back.dto.ForumCreateRequest
+import com.example.forum_back.dto.ForumUpdateRequest
 import com.example.forum_back.entity.Forum
 import com.example.forum_back.repository.ForumRepository
 import com.example.forum_back.util.findByIdOrThrow
@@ -27,15 +27,15 @@ class ForumService (
     }
 
     @Transactional
-    fun createForum(forumCreateRequestDto: ForumCreateRequestDto) {
-        val newForum = Forum(forumCreateRequestDto.title, forumCreateRequestDto.description, forumCreateRequestDto.author)
+    fun createForum(forumCreateRequest: ForumCreateRequest) {
+        val newForum = Forum(forumCreateRequest.title, forumCreateRequest.description, forumCreateRequest.author)
         forumRepository.save(newForum)
     }
 
     @Transactional
-    fun updateForum(forumId: Long, forumUpdateRequestDto: ForumUpdateRequestDto) {
+    fun updateForum(forumId: Long, forumUpdateRequest: ForumUpdateRequest) {
         val forum = forumRepository.findByIdOrThrow(forumId)
-        forum.updateForum(forumUpdateRequestDto)
+        forum.updateForum(forumUpdateRequest)
     }
 
     @Transactional
