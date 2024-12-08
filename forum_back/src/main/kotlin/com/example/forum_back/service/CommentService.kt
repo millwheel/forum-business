@@ -27,7 +27,8 @@ class CommentService(
         val comment = Comment(
             description = commentCreateRequest.description,
             author = commentCreateRequest.author,
-            forumId = forumId
+            forumId = forumId,
+            null
         )
         return commentRepository.save(comment)
     }
