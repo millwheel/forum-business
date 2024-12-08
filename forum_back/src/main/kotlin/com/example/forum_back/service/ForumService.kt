@@ -22,6 +22,10 @@ class ForumService (
             .orElseThrow{ RuntimeException("The forum $forumId does not exist") }
     }
 
+    fun getForumByAuthor(author: String) : List<Forum> {
+        return forumRepository.findByAuthor(author)
+    }
+
     @Transactional
     fun createForum(forumCreateRequestDto: ForumCreateRequestDto) {
         val newForum = Forum(forumCreateRequestDto.title, forumCreateRequestDto.description, forumCreateRequestDto.author)
