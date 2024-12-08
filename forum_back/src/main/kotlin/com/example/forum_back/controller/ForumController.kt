@@ -18,9 +18,7 @@ class ForumController(
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     fun getAllForums(): List<ForumResponse> {
-        val allForums = forumService.getAllForums()
-        val forumResponses = allForums.stream().map { forum -> ForumResponse.of(forum) }.toList()
-        return forumResponses
+        return forumService.getAllForums().map { ForumResponse.of(it) }
     }
 
     @GetMapping("/{forumId}")

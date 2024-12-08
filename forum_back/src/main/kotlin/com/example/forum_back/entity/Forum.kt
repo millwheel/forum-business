@@ -16,7 +16,7 @@ class Forum constructor(
 ) {
 
     init {
-        if (title.isBlank()) {
+        if (this.title.isBlank()) {
             throw IllegalArgumentException("title cannot be blank")
         }
     }
