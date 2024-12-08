@@ -13,7 +13,7 @@ class Forum constructor(
     @Id
     @GeneratedValue(strategy = IDENTITY)
     val id: Long? = null
-) {
+) : BaseTime() {
 
     init {
         if (this.title.isBlank()) {
