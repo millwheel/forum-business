@@ -4,10 +4,7 @@ import com.example.forum_back.dto.ForumCreateRequestDto
 import com.example.forum_back.dto.ForumUpdateRequestDto
 import com.example.forum_back.entity.Forum
 import com.example.forum_back.repository.ForumRepository
-import com.example.forum_back.util.fail
 import com.example.forum_back.util.findByIdOrThrow
-import org.aspectj.bridge.MessageUtil.fail
-import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
