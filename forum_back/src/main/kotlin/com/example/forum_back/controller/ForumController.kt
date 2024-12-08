@@ -3,8 +3,8 @@ package com.example.forum_back.controller
 import com.example.forum_back.dto.ForumCreateRequest
 import com.example.forum_back.dto.ForumResponse
 import com.example.forum_back.dto.ForumUpdateRequest
-import com.example.forum_back.entity.Forum
 import com.example.forum_back.service.ForumService
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
@@ -30,7 +30,7 @@ class ForumController(
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    fun createForum(@RequestBody forumCreateRequest: ForumCreateRequest) {
+    fun createForum(@RequestBody @Valid forumCreateRequest: ForumCreateRequest) {
         forumService.createForum(forumCreateRequest)
     }
 
