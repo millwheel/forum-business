@@ -5,6 +5,7 @@ import com.example.forum_back.dto.comment.CommentResponse
 import com.example.forum_back.dto.comment.CommentUpdateRequest
 import com.example.forum_back.service.CommentService
 import jakarta.validation.Valid
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -20,6 +21,7 @@ class CommentController(
     }
 
     @PostMapping("/forum/{forumId}")
+    @ResponseStatus(HttpStatus.CREATED)
     fun createComment(
         @PathVariable forumId: Long,
         @Valid @RequestBody commentCreateRequest: CommentCreateRequest

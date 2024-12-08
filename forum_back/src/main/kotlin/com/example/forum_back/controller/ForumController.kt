@@ -16,13 +16,11 @@ class ForumController(
 ) {
 
     @GetMapping
-    @ResponseStatus(HttpStatus.OK)
     fun getAllForums(): List<ForumResponse> {
         return forumService.getAllForums().map { ForumResponse.of(it) }
     }
 
     @GetMapping("/{forumId}")
-    @ResponseStatus(HttpStatus.OK)
     fun getForumById(@PathVariable forumId: Long): ForumResponse {
         val forum = forumService.getForumById(forumId)
         return ForumResponse.of(forum)
@@ -35,7 +33,6 @@ class ForumController(
     }
 
     @PutMapping("/{forumId}")
-    @ResponseStatus(HttpStatus.OK)
     fun updateForum(@PathVariable forumId: Long,
                     @RequestBody forumUpdateRequest: ForumUpdateRequest
     ) {
@@ -43,7 +40,6 @@ class ForumController(
     }
 
     @DeleteMapping("/{forumId}")
-    @ResponseStatus(HttpStatus.OK)
     fun deleteForum(@PathVariable forumId: Long) {
         forumService.deleteForum(forumId)
     }
