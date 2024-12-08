@@ -4,3 +4,10 @@ spring:
       "local": "local"
       "dev": "dev"
       "prod": "prod"
+
+management:
+  server:
+    port: 9292
+  endpoint:
+    health:
+      show-components: always
