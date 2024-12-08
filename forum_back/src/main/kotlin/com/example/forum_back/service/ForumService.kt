@@ -27,15 +27,16 @@ class ForumService (
     }
 
     @Transactional
-    fun createForum(forumCreateRequest: ForumCreateRequest) {
+    fun createForum(forumCreateRequest: ForumCreateRequest) : Forum {
         val newForum = Forum(forumCreateRequest.title, forumCreateRequest.description, forumCreateRequest.author)
-        forumRepository.save(newForum)
+        return forumRepository.save(newForum)
     }
 
     @Transactional
-    fun updateForum(forumId: Long, forumUpdateRequest: ForumUpdateRequest) {
+    fun updateForum(forumId: Long, forumUpdateRequest: ForumUpdateRequest) : Forum {
         val forum = forumRepository.findByIdOrThrow(forumId)
         forum.updateForum(forumUpdateRequest)
+        return forumRepository.save(forum)
     }
 
     @Transactional

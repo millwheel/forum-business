@@ -10,7 +10,7 @@ import jakarta.persistence.Id
 class Comment (
     var description: String,
     var author: String,
-    val forumId: Int,
+    val forumId: Long,
     @Id
     @GeneratedValue(strategy = IDENTITY)
     val id: Long? = null
