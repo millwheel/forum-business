@@ -1,4 +1,4 @@
-package com.example.forum_back.dto
+package com.example.forum_back.dto.forum
 
 import com.example.forum_back.entity.Forum
 

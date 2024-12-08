@@ -1,6 +1,6 @@
 package com.example.forum_back.entity
 
-import com.example.forum_back.dto.ForumUpdateRequest
+import com.example.forum_back.dto.forum.ForumUpdateRequest
 import jakarta.persistence.*
 import jakarta.persistence.GenerationType.*
 

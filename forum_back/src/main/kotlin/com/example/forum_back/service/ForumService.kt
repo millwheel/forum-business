@@ -1,7 +1,7 @@
 package com.example.forum_back.service
 
-import com.example.forum_back.dto.ForumCreateRequest
-import com.example.forum_back.dto.ForumUpdateRequest
+import com.example.forum_back.dto.forum.ForumCreateRequest
+import com.example.forum_back.dto.forum.ForumUpdateRequest
 import com.example.forum_back.entity.Forum
 import com.example.forum_back.repository.ForumRepository
 import com.example.forum_back.util.findByIdOrThrow
