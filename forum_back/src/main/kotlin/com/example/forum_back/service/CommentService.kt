@@ -16,9 +16,6 @@ class CommentService(
 ) {
 
     fun getCommentsByForumId(forumId: Long): List<Comment> {
-        if (!commentRepository.existsByForumId(forumId)) {
-            throw IllegalArgumentException("Forum with id: $forumId does not exist.")
-        }
         return commentRepository.findByForumId(forumId)
     }
 

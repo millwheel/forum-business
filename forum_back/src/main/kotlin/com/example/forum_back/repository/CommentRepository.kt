@@ -6,6 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository
 interface CommentRepository : JpaRepository<Comment, Long> {
 
     fun findByForumId(forumId:Long): List<Comment>
-    fun existsByForumId(forumId: Long): Boolean
 
 }
