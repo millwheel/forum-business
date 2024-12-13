@@ -1,16 +1,6 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import React from "react";
 
 export const metadata: Metadata = {
   title: "Forum App",
@@ -24,12 +14,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      <body className="bg-gray-100 min-h-screen flex flex-col">
+        <header className="bg-gray-800 text-white p-4 shadow-md">
+          <div className="container mx-auto flex justify-between items-center">
+            <h1 className="text-2xl font-bold">Forum App</h1>
+          </div>
+        </header>
+        <main className="container mx-auto p-6 flex-1">{children}</main>
+        <footer className="bg-gray-800 text-white text-center py-4">
+          © 2024 Forum App. All Rights Reserved.
+        </footer>
       </body>
-      <footer>© 2024 My App</footer>
     </html>
   );
 }

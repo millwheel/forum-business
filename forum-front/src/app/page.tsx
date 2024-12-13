@@ -1,7 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
+import AuthManager from "@/app/components/AuthManager";
 
 export default function HomePage() {
   const router = useRouter();
@@ -14,8 +15,11 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div>
-      <h1>Welcome to Forum</h1>
+    <div className="flex items-center justify-center h-screen bg-gray-100">
+      <div className="text-center">
+        <AuthManager />
+        <h1 className="text-2xl font-bold">Welcome to Forum</h1>
+      </div>
     </div>
   );
 }
