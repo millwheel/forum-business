@@ -28,3 +28,9 @@ spring:
         default_batch_fetch_size: 100
         time_zone: UTC
         default_schema: public
+
+logging:
+  level:
+    org:
+      springframework:
+        security: DEBUG
