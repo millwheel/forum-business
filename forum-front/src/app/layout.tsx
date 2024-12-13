@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import React from "react";
+import AuthManager from "@/app/components/AuthManager";
 
 export const metadata: Metadata = {
   title: "Forum App",
@@ -20,6 +21,7 @@ export default function RootLayout({
           <div className="container mx-auto flex justify-between items-center">
             <h1 className="text-2xl font-bold">Forum App</h1>
           </div>
+          <AuthManager />
         </header>
 
         {/* Main Content */}
