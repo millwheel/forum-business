@@ -15,17 +15,6 @@ class ForumController(
     private val forumService: ForumService
 ) {
 
-    @GetMapping
-    fun getAllForums(): List<ForumResponse> {
-        return forumService.getAllForums().map { ForumResponse.of(it) }
-    }
-
-    @GetMapping("/{forumId}")
-    fun getForumById(@PathVariable forumId: Long): ForumResponse {
-        val forum = forumService.getForumById(forumId)
-        return ForumResponse.of(forum)
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     fun createForum(@RequestBody @Valid forumCreateRequest: ForumCreateRequest) {

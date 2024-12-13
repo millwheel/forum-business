@@ -14,12 +14,6 @@ class CommentController(
     private val commentService: CommentService
 ) {
 
-    @GetMapping("/forum/{forumId}")
-    fun getCommentsByForumId(@PathVariable forumId: Long): List<CommentResponse> {
-        val comments = commentService.getCommentsByForumId(forumId)
-        return comments.map { CommentResponse.of(it) }
-    }
-
     @PostMapping("/forum/{forumId}")
     @ResponseStatus(HttpStatus.CREATED)
     fun createComment(

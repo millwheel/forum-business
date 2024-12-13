@@ -12,7 +12,7 @@ class SecurityConfig {
     fun securityFilterChain(http: HttpSecurity): SecurityFilterChain {
         http
             .authorizeHttpRequests { authorization -> authorization
-                .requestMatchers("/", "/actuator/**").permitAll()
+                .requestMatchers("/", "/actuator/**", "/error/**", "/public/**").permitAll()
                 .anyRequest().authenticated()
             }
         return http.build()
