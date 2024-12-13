@@ -15,7 +15,7 @@ export default function CommentForm({ forumId, setComments }: any) {
       },
       body: JSON.stringify({
         description,
-        author: "test user", // 임시 사용자
+        author: "test user",
       }),
     })
       .then((response) => response.json())

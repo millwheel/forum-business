@@ -11,8 +11,11 @@ export default function ForumList({ forums }: { forums: any[] }) {
           <h2 className="text-lg font-bold">{forum.title}</h2>
           <p>{forum.description}</p>
           <p className="text-sm text-gray-500">Author: {forum.author}</p>
-          <Link href={`/forums/${forum.id}`}>
-            <a className="text-blue-500 underline">View Details</a>
+          <Link
+            href={`/forums/${forum.id}`}
+            className="text-blue-500 underline"
+          >
+            View Details
           </Link>
         </li>
       ))}
