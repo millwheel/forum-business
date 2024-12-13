@@ -29,6 +29,7 @@ export default function RootLayout({
       >
         {children}
       </body>
+      <footer>© 2024 My App</footer>
     </html>
   );
 }

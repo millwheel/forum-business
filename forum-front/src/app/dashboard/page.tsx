@@ -1,21 +1,22 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
-export default function HomePage() {
+export default function DashboardPage() {
   const router = useRouter();
 
   useEffect(() => {
     const token = document.cookie.includes("access_token");
-    if (token) {
-      router.push("/dashboard");
+    if (!token) {
+      router.push("/login");
     }
   }, []);
 
   return (
     <div>
-      <h1>Welcome to Forum</h1>
+      <h1>Dashboard</h1>
+      <p>Welcome to your dashboard!</p>
     </div>
   );
 }
