@@ -27,4 +27,4 @@ if [ -z "$JAVA" ]; then
 fi
 
 DIRNAME="$(dirname "$RESOLVED_NAME")"
-exec "$JAVA" $KC_OPTS -cp $DIRNAME/client/keycloak-admin-cli-26.0.6.jar --add-opens=java.base/java.security=ALL-UNNAMED -Dkc.lib.dir=$DIRNAME/client/lib org.keycloak.client.registration.cli.KcRegMain "$@"
+exec "$JAVA" $KC_OPTS -cp $DIRNAME/client/keycloak-admin-cli-26.0.5.jar --add-opens=java.base/java.security=ALL-UNNAMED -Dkc.lib.dir=$DIRNAME/client/lib org.keycloak.client.registration.cli.KcRegMain "$@"

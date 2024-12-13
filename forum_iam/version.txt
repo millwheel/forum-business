@@ -1,1 +1,1 @@
-Keycloak - Version 26.0.6
+Keycloak - Version 26.0.5
