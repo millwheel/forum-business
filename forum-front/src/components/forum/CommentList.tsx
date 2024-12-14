@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export default function CommentList({ comments }: { comments: any[] }) {
+export default function CommentList({ comments }: { comments: Comment[] }) {
   return (
     <ul className="space-y-4 max-w-[800px] mx-auto">
       {comments.map((comment) => (

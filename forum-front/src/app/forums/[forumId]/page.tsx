@@ -10,8 +10,8 @@ export default function ForumDetailPage() {
   const backendHost = process.env.NEXT_PUBLIC_BACKEND_HOST;
 
   const { forumId } = useParams();
-  const [forum, setForum] = useState<Forum>();
-  const [comments, setComments] = useState([]);
+  const [forum, setForum] = useState<Forum | null>(null);
+  const [comments, setComments] = useState<Comment[]>([]);
 
   useEffect(() => {
     fetch(`${backendHost}/public/forums/${forumId}`)
