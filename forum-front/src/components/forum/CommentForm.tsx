@@ -10,7 +10,7 @@ export default function CommentForm({ forumId, setComments }: any) {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    fetch(`http://${backendHost}/comments/forum/${forumId}`, {
+    fetch(`${backendHost}/comments/forum/${forumId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

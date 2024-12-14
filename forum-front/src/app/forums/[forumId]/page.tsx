@@ -14,12 +14,12 @@ export default function ForumDetailPage() {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    fetch(`http://${backendHost}/public/forums/${forumId}`)
+    fetch(`${backendHost}/public/forums/${forumId}`)
       .then((response) => response.json())
       .then((data) => setForum(data))
       .catch((error) => console.error("Error fetching forum:", error));
 
-    fetch(`http://${backendHost}/public/comments/forum/${forumId}`)
+    fetch(`${backendHost}/public/comments/forum/${forumId}`)
       .then((response) => response.json())
       .then((data) => setComments(data))
       .catch((error) => console.error("Error fetching comments:", error));

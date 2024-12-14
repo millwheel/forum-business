@@ -3,7 +3,7 @@
 import React from "react";
 import Link from "next/link";
 
-export default function ForumList({ forums }: { forums: any[] }) {
+export default function ForumList({ forums }: { forums: ForumSummary[] }) {
   return (
     <ul className="space-y-4 max-w-[800px] mx-auto">
       {forums.map((forum) => (

@@ -5,10 +5,10 @@ import ForumList from "@/components/forum/ForumList";
 
 export default function ForumPage() {
   const backendHost = process.env.NEXT_PUBLIC_BACKEND_HOST;
-  const [forums, setForums] = useState([]);
+  const [forums, setForums] = useState<ForumSummary[]>([]);
 
   useEffect(() => {
-    fetch(`http://${backendHost}/public/forums`)
+    fetch(`${backendHost}/public/forums`)
       .then((response) => response.json())
       .then((data) => setForums(data))
       .catch((error) => console.error("Error fetching forums:", error));
