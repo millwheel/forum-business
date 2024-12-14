@@ -1,7 +1,6 @@
 package com.example.forum_back.controller
 
 import com.example.forum_back.dto.comment.CommentCreateRequest
-import com.example.forum_back.dto.comment.CommentResponse
 import com.example.forum_back.dto.comment.CommentUpdateRequest
 import com.example.forum_back.service.CommentService
 import jakarta.validation.Valid
@@ -19,18 +18,16 @@ class CommentController(
     fun createComment(
         @PathVariable forumId: Long,
         @Valid @RequestBody commentCreateRequest: CommentCreateRequest
-    ): CommentResponse {
-        val createdComment = commentService.createComment(forumId, commentCreateRequest)
-        return CommentResponse.of(createdComment)
+    ) {
+        commentService.createComment(forumId, commentCreateRequest)
     }
 
     @PutMapping("/{commentId}")
     fun updateComment(
         @PathVariable commentId: Long,
         @Valid @RequestBody commentUpdateRequest: CommentUpdateRequest
-    ): CommentResponse {
-        val updatedComment = commentService.updateComment(commentId, commentUpdateRequest)
-        return CommentResponse.of(updatedComment)
+    ) {
+        commentService.updateComment(commentId, commentUpdateRequest)
     }
 
     @DeleteMapping("/{commentId}")

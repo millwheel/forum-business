@@ -1,5 +1,6 @@
 package com.example.forum_back.controller
 
+import com.example.forum_back.dto.ResponseResult
 import com.example.forum_back.dto.comment.CommentResponse
 import com.example.forum_back.service.CommentService
 import org.springframework.web.bind.annotation.GetMapping
@@ -14,8 +15,7 @@ class PublicCommentController (
 ) {
 
     @GetMapping("/forum/{forumId}")
-    fun getCommentsByForumId(@PathVariable forumId: Long): List<CommentResponse> {
-        val comments = commentService.getCommentsByForumId(forumId)
-        return comments.map { CommentResponse.of(it) }
+    fun getCommentsByForumId(@PathVariable forumId: Long): ResponseResult<List<CommentResponse>> {
+        return ResponseResult(commentService.getCommentsByForumId(forumId))
     }
 }

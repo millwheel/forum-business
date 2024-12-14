@@ -38,8 +38,10 @@ class ForumService (
 
     @Transactional
     fun createForum(forumCreateRequest: ForumCreateRequest) : Forum {
-        val user = userRepository.findByIdOrThrow(forumCreateRequest.authorId)
-        val newForum = Forum(forumCreateRequest.title, forumCreateRequest.description, user.id!!)
+        if(!userRepository.existsById(forumCreateRequest.authorId)){
+            throw RuntimeException("User Not Found")
+        }
+        val newForum = Forum(forumCreateRequest.title, forumCreateRequest.description, forumCreateRequest.authorId)
         return forumRepository.save(newForum)
     }
 

@@ -1,5 +1,6 @@
 package com.example.forum_back.dto.comment
 
+import com.example.forum_back.entity.User
 import com.example.forum_back.entity.comment.Comment
 
 data class CommentResponse (
@@ -8,11 +9,11 @@ data class CommentResponse (
     val author: String
 ) {
     companion object {
-        fun of(comment: Comment): CommentResponse {
+        fun of(comment: Comment, user: User): CommentResponse {
             return CommentResponse(
                 id = comment.id!!,
                 description = comment.description,
-                author = comment.author
+                author = user.name
             )
         }
     }
