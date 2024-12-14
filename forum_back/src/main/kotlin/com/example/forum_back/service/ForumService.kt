@@ -8,6 +8,9 @@ import com.example.forum_back.entity.forum.Forum
 import com.example.forum_back.repository.ForumRepository
 import com.example.forum_back.repository.UserRepository
 import com.example.forum_back.util.findByIdOrThrow
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.PageRequest
+import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
@@ -18,8 +21,10 @@ class ForumService (
     private val userRepository : UserRepository
 ) {
 
-    fun getAllForums() : List<ForumSummaryResponse> {
-        return forumRepository.findAll().map { forum ->
+    fun getAllForums(pageNumber: Int) : List<ForumSummaryResponse> {
+        val pageable: Pageable = PageRequest.of(pageNumber, 10)
+        val forums = forumRepository.findAllByOrderByCreatedAtDesc(pageable)
+        return forums.map { forum ->
             val user = userRepository.findByIdOrThrow(forum.authorId)
             ForumSummaryResponse.of(forum, user)
         }
