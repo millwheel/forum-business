@@ -1,6 +1,6 @@
 package com.example.forum_back.dto.comment
 
-import com.example.forum_back.entity.Comment
+import com.example.forum_back.entity.comment.Comment
 
 data class CommentResponse (
     val id: Long,

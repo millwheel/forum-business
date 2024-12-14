@@ -1,6 +1,6 @@
 package com.example.forum_back.dto.forum
 
-import com.example.forum_back.entity.Forum
+import com.example.forum_back.entity.forum.Forum
 
 data class ForumResponse (
     val id: Long,

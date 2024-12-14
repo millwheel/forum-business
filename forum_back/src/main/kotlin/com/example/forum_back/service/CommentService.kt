@@ -2,7 +2,7 @@ package com.example.forum_back.service
 
 import com.example.forum_back.dto.comment.CommentCreateRequest
 import com.example.forum_back.dto.comment.CommentUpdateRequest
-import com.example.forum_back.entity.Comment
+import com.example.forum_back.entity.comment.Comment
 import com.example.forum_back.repository.CommentRepository
 import com.example.forum_back.util.findByIdOrThrow
 

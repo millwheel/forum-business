@@ -1,4 +1,4 @@
-package com.example.forum_back.entity
+package com.example.forum_back.entity.comment
 
 import com.example.forum_back.dto.comment.CommentUpdateRequest
 import jakarta.persistence.Entity

@@ -1,6 +1,7 @@
-package com.example.forum_back.entity
+package com.example.forum_back.entity.forum
 
 import com.example.forum_back.dto.forum.ForumUpdateRequest
+import com.example.forum_back.entity.BaseTime
 import jakarta.persistence.*
 import jakarta.persistence.GenerationType.*
 
