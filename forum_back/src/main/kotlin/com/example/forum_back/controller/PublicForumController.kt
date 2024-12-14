@@ -1,6 +1,7 @@
 package com.example.forum_back.controller
 
 import com.example.forum_back.dto.forum.ForumResponse
+import com.example.forum_back.dto.forum.ForumSummaryResponse
 import com.example.forum_back.service.ForumService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -19,9 +20,9 @@ class PublicForumController (
     }
 
     @GetMapping("/{forumId}")
-    fun getForumById(@PathVariable forumId: Long): ForumResponse {
+    fun getForumById(@PathVariable forumId: Long): ForumSummaryResponse {
         val forum = forumService.getForumById(forumId)
-        return ForumResponse.of(forum)
+        return ForumSummaryResponse.of(forum)
     }
 
 }
