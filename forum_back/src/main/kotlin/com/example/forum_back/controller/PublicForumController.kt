@@ -15,14 +15,14 @@ class PublicForumController (
 ){
 
     @GetMapping
-    fun getAllForums(): List<ForumResponse> {
-        return forumService.getAllForums().map { ForumResponse.of(it) }
+    fun getAllForums(): List<ForumSummaryResponse> {
+        return forumService.getAllForums().map { ForumSummaryResponse.of(it) }
     }
 
     @GetMapping("/{forumId}")
-    fun getForumById(@PathVariable forumId: Long): ForumSummaryResponse {
+    fun getForumById(@PathVariable forumId: Long): ForumResponse {
         val forum = forumService.getForumById(forumId)
-        return ForumSummaryResponse.of(forum)
+        return ForumResponse.of(forum)
     }
 
 }
