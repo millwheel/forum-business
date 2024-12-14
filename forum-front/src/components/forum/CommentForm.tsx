@@ -2,7 +2,13 @@
 
 import React, { useState } from "react";
 
-export default function CommentForm({ forumId, setComments }: any) {
+export default function CommentForm({
+  forumId,
+  setComments,
+}: {
+  forumId: number;
+  setComments: Setter<Comment[]>;
+}) {
   const backendHost = process.env.NEXT_PUBLIC_BACKEND_HOST;
 
   const [description, setDescription] = useState("");

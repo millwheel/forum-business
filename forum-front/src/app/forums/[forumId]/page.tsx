@@ -9,7 +9,7 @@ import CommentForm from "@/components/forum/CommentForm";
 export default function ForumDetailPage() {
   const backendHost = process.env.NEXT_PUBLIC_BACKEND_HOST;
 
-  const { forumId } = useParams();
+  const { forumId } = useParams<{ forumId: string }>();
   const [forum, setForum] = useState<Forum | null>(null);
   const [comments, setComments] = useState<Comment[]>([]);
 
@@ -30,7 +30,7 @@ export default function ForumDetailPage() {
       {forum && <ForumDetail forum={forum} />}
       <h2 className="text-xl font-bold mt-6">Comments</h2>
       <CommentList comments={comments} />
-      <CommentForm forumId={forumId} setComments={setComments} />
+      <CommentForm forumId={Number(forumId)} setComments={setComments} />
     </div>
   );
 }
