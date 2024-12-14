@@ -7,12 +7,6 @@ spring:
       on-profile: local
     import:
       - optional:file:env/local.env[.properties]
-  security:
-    oauth2:
-      resourceserver:
-        jwt:
-          issuer-uri: ${KEYCLOAK_HOST}/realms/${KEYCLOAK_REALM}
-          jwk-set-uri: ${KEYCLOAK_HOST}/realms/${KEYCLOAK_REALM}/protocol/openid-connect/certs
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/forum
@@ -33,4 +27,4 @@ logging:
   level:
     org:
       springframework:
-        security: DEBUG
+        security.oauth2.server.resource: TRACE
