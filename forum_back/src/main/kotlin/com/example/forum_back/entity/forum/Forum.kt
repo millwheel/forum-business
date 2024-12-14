@@ -10,7 +10,7 @@ import jakarta.persistence.GenerationType.*
 class Forum constructor(
     var title: String,
     var description: String,
-    var author: String,
+    var authorId: Long,
     @Id
     @GeneratedValue(strategy = IDENTITY)
     val id: Long? = null
@@ -23,8 +23,8 @@ class Forum constructor(
     }
 
     fun updateForum(forumUpdateRequest: ForumUpdateRequest){
-        this.title = forumUpdateRequest.title;
-        this.description = forumUpdateRequest.description;
+        this.title = forumUpdateRequest.title
+        this.description = forumUpdateRequest.description
     }
 
 }

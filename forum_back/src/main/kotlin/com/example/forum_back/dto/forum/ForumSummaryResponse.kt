@@ -1,5 +1,6 @@
 package com.example.forum_back.dto.forum
 
+import com.example.forum_back.entity.User
 import com.example.forum_back.entity.forum.Forum
 
 class ForumSummaryResponse(
@@ -9,11 +10,11 @@ class ForumSummaryResponse(
 ) {
 
     companion object{
-        fun of(forum: Forum): ForumSummaryResponse{
+        fun of(forum: Forum, user: User): ForumSummaryResponse{
             return ForumSummaryResponse(
                 id = forum.id!!,
                 title = forum.title,
-                author = forum.author
+                author = user.name
             )
         }
     }

@@ -1,5 +1,6 @@
 package com.example.forum_back.controller
 
+import com.example.forum_back.dto.ResponseResult
 import com.example.forum_back.dto.forum.ForumResponse
 import com.example.forum_back.dto.forum.ForumSummaryResponse
 import com.example.forum_back.service.ForumService
@@ -15,14 +16,13 @@ class PublicForumController (
 ){
 
     @GetMapping
-    fun getAllForums(): List<ForumSummaryResponse> {
-        return forumService.getAllForums().map { ForumSummaryResponse.of(it) }
+    fun getAllForums(): ResponseResult<List<ForumSummaryResponse>> {
+        return ResponseResult(forumService.getAllForums())
     }
 
     @GetMapping("/{forumId}")
     fun getForumById(@PathVariable forumId: Long): ForumResponse {
-        val forum = forumService.getForumById(forumId)
-        return ForumResponse.of(forum)
+        return forumService.getForumById(forumId)
     }
 
 }
