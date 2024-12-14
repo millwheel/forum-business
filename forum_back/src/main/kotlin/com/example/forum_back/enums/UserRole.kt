@@ -1,4 +1,4 @@
-package com.example.forum_back.entity.constant
+package com.example.forum_back.enums
 
 enum class UserRole {
     MEMBER,
