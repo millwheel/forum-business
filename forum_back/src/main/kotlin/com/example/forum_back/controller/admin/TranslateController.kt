@@ -13,6 +13,6 @@ class TranslateController (
 
     @PostMapping
     fun translate() {
-        openaiApiSender.sendRequestToOpenAI("st")
+        openaiApiSender.sendTranslateRequest("요즘 뜨는 뉴스는 국회 탄핵 관련 뉴스 밖에 없어서 조금 질린다.")
     }
 }
