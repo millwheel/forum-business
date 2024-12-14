@@ -11,7 +11,7 @@ export default function AuthManager() {
     if (typeof window !== "undefined") {
       const currentPath = window.location.pathname;
 
-      if (currentPath === "/login") {
+      if (currentPath === "/auth/login") {
         setShouldRender(false);
         return;
       }

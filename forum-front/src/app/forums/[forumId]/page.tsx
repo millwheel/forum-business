@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
-import ForumDetail from "@/app/components/ForumDetail";
-import CommentList from "@/app/components/CommentList";
-import CommentForm from "@/app/components/CommentForm";
+import ForumDetail from "@/app/forums/components/ForumDetail";
+import CommentList from "@/app/forums/components/CommentList";
+import CommentForm from "@/app/forums/components/CommentForm";
 
 export default function ForumDetailPage() {
   const { forumId } = useParams();

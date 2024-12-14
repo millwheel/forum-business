@@ -21,7 +21,7 @@ export default function AuthButtons({
         </button>
       ) : (
         <button
-          onClick={() => (window.location.href = "/login")}
+          onClick={() => (window.location.href = "/auth/login")}
           className="bg-gray-700 text-white px-6 py-2 rounded hover:bg-red-600"
         >
           Login

@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
-import AuthManager from "@/app/components/AuthManager";
 
 export default function HomePage() {
   const router = useRouter();
