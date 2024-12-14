@@ -21,17 +21,9 @@ class User (
         if (this.email.isBlank()) {
             throw IllegalArgumentException("email cannot be blank")
         }
-        if (isValidEmail(this.email)){
-            throw IllegalArgumentException("Invalid email format")
-        }
         if (this.password.isBlank()) {
             throw IllegalArgumentException("password cannot be blank")
         }
-    }
-
-    fun isValidEmail(email: String): Boolean {
-        val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$".toRegex()
-        return emailRegex.matches(email)
     }
 
 }

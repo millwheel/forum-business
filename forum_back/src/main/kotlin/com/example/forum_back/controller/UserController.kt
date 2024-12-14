@@ -7,7 +7,7 @@ import com.example.forum_back.service.UserService
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/users")
 class UserController (
     private val userService: UserService
 ) {
