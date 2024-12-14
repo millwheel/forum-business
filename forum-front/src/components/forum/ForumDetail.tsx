@@ -2,7 +2,7 @@
 
 import React from "react";
 
-export default function ForumDetail({ forum }: { forum: any }) {
+export default function ForumDetail({ forum }: { forum: Forum }) {
   return (
     <div className="border p-4 rounded shadow max-w-[800px] mx-auto">
       <h1 className="text-2xl font-bold">{forum.title}</h1>
