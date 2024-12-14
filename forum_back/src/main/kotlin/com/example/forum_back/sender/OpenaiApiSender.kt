@@ -15,6 +15,7 @@ class OpenaiApiSender(
         .build()
 
     fun sendTranslateRequest(text: String) {
+        println(openaiProperties.key)
         val result = restClient.post()
             .body(buildRequestBody(text))
             .retrieve()

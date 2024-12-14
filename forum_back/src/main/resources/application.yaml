@@ -13,3 +13,6 @@ management:
     web:
       exposure:
         include: "*"
+
+openai:
+  key: ${OPENAI_KEY}

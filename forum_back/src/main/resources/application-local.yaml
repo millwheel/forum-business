@@ -8,26 +8,19 @@ spring:
     import:
       - optional:file:env/local.env[.properties]
   datasource:
-    driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5432/forum
-    username: season
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:~/forum
+    username: sa
     password: 1234
   jpa:
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
-    properties:
-      hibernate:
-        format_sql: true
-        default_batch_fetch_size: 100
-        time_zone: UTC
-        default_schema: public
+  h2:
+    console:
+      enabled: true
 
 logging:
   level:
     org:
       springframework:
         security.oauth2.server.resource: TRACE
-
-openai:
-  key: ${OPEN_AI_KEY}
