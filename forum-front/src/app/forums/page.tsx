@@ -4,10 +4,11 @@ import React, { useEffect, useState } from "react";
 import ForumList from "@/components/forum/ForumList";
 
 export default function ForumPage() {
+  const backendHost = process.env.NEXT_PUBLIC_BACKEND_HOST;
   const [forums, setForums] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8081/public/forums")
+    fetch(`http://${backendHost}/public/forums`)
       .then((response) => response.json())
       .then((data) => setForums(data))
       .catch((error) => console.error("Error fetching forums:", error));

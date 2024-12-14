@@ -7,7 +7,7 @@ export default function CallbackPage() {
   const router = useRouter();
 
   useEffect(() => {
-    const keycloakUrl = process.env.NEXT_PUBLIC_KEYCLOAK_URL!;
+    const keycloakHost = process.env.NEXT_PUBLIC_KEYCLOAK_HOST!;
     const realm = process.env.NEXT_PUBLIC_KEYCLOAK_REALM!;
     const clientId = process.env.NEXT_PUBLIC_KEYCLOAK_CLIENT_ID!;
     const redirectUri = process.env.NEXT_PUBLIC_KEYCLOAK_REDIRECT_URI!;
@@ -15,7 +15,7 @@ export default function CallbackPage() {
     const code = urlParams.get("code");
 
     if (code) {
-      fetch(`${keycloakUrl}/realms/${realm}/protocol/openid-connect/token`, {
+      fetch(`${keycloakHost}/realms/${realm}/protocol/openid-connect/token`, {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

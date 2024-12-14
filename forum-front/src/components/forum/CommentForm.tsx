@@ -3,12 +3,14 @@
 import React, { useState } from "react";
 
 export default function CommentForm({ forumId, setComments }: any) {
+  const backendHost = process.env.NEXT_PUBLIC_BACKEND_HOST;
+
   const [description, setDescription] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    fetch(`http://localhost:8081/comments/forum/${forumId}`, {
+    fetch(`http://${backendHost}/comments/forum/${forumId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -21,7 +23,7 @@ export default function CommentForm({ forumId, setComments }: any) {
       .then((response) => response.json())
       .then((newComment) => {
         setComments((prevComments: any[]) => [...prevComments, newComment]);
-        setDescription(""); // 입력 필드 초기화
+        setDescription("");
       })
       .catch((error) => console.error("Error creating comment:", error));
   };
@@ -32,7 +34,7 @@ export default function CommentForm({ forumId, setComments }: any) {
         value={description}
         onChange={(e) => setDescription(e.target.value)}
         placeholder="Write a comment..."
-        className="w-full border p-2 rounded"
+        className="w-full border p-2 h-28 rounded resize-none"
       />
       <button
         type="submit"

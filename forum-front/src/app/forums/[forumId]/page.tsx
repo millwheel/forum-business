@@ -7,19 +7,19 @@ import CommentList from "@/components/forum/CommentList";
 import CommentForm from "@/components/forum/CommentForm";
 
 export default function ForumDetailPage() {
+  const backendHost = process.env.NEXT_PUBLIC_BACKEND_HOST;
+
   const { forumId } = useParams();
   const [forum, setForum] = useState(null);
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    // 게시판 정보 가져오기
-    fetch(`http://localhost:8081/public/forums/${forumId}`)
+    fetch(`http://${backendHost}/public/forums/${forumId}`)
       .then((response) => response.json())
       .then((data) => setForum(data))
       .catch((error) => console.error("Error fetching forum:", error));
 
-    // 댓글 가져오기
-    fetch(`http://localhost:8081/public/comments/forum/${forumId}`)
+    fetch(`http://${backendHost}/public/comments/forum/${forumId}`)
       .then((response) => response.json())
       .then((data) => setComments(data))
       .catch((error) => console.error("Error fetching comments:", error));
