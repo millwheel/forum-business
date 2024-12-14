@@ -2,9 +2,11 @@
 
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/components/auth/AuthContext";
 
 export default function CallbackPage() {
   const router = useRouter();
+  const { setAccessToken } = useAuth();
 
   useEffect(() => {
     const keycloakHost = process.env.NEXT_PUBLIC_KEYCLOAK_HOST!;
@@ -31,7 +33,7 @@ export default function CallbackPage() {
         .then((data) => {
           if (data.access_token) {
             console.log("Access Token:", data.access_token);
-            document.cookie = `access_token=${data.access_token}; path=/; max-age=${data.expires_in}`;
+            setAccessToken(data.access_token);
             router.push("/forums");
           } else {
             console.error("Failed to authenticate:", data.error);
