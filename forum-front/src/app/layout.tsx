@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import React from "react";
-import AuthManager from "@/app/auth/components/AuthManager";
+import AuthManager from "@/components/auth/AuthManager";
 
 export const metadata: Metadata = {
   title: "Forum App",

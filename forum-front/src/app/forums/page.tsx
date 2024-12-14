@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import ForumList from "@/app/forums/components/ForumList";
+import ForumList from "@/components/forum/ForumList";
 
 export default function ForumPage() {
   const [forums, setForums] = useState([]);

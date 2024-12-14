@@ -32,7 +32,7 @@ export default function CallbackPage() {
           if (data.access_token) {
             console.log("Access Token:", data.access_token);
             document.cookie = `access_token=${data.access_token}; path=/; max-age=${data.expires_in}`;
-            router.push("/dashboard");
+            router.push("/forums");
           } else {
             console.error("Failed to authenticate:", data.error);
           }

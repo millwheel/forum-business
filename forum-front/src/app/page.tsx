@@ -14,7 +14,7 @@ export default function HomePage() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
+    <div className="flex items-center justify-center h-72">
       <div className="text-center">
         <h1 className="text-2xl font-bold">Welcome to Forum</h1>
       </div>
