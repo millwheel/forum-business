@@ -6,6 +6,4 @@ import jakarta.persistence.MappedSuperclass
 @MappedSuperclass
 abstract class LocalizedText (
     language: Language
-) : BaseTime() {
-
-}
+) : BaseTime()
