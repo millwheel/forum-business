@@ -5,23 +5,18 @@ import AuthButtons from "./AuthButtons";
 
 export default function AuthManager() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [shouldRender, setShouldRender] = useState(true);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
-      const currentPath = window.location.pathname;
-
-      if (currentPath === "/auth/login") {
-        setShouldRender(false);
-        return;
-      }
-
       const tokenExists = document.cookie.includes("access_token");
       setIsAuthenticated(tokenExists);
     }
   }, []);
 
-  if (!shouldRender) {
+  const currentPath =
+    typeof window !== "undefined" ? window.location.pathname : "";
+
+  if (currentPath === "/auth/login") {
     return null;
   }
 

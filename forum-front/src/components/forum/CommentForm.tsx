@@ -27,7 +27,7 @@ export default function CommentForm({ forumId, setComments }: any) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="mt-4">
+    <form onSubmit={handleSubmit} className="mt-4 max-w-[800px] mx-auto">
       <textarea
         value={description}
         onChange={(e) => setDescription(e.target.value)}
