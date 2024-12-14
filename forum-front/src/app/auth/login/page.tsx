@@ -19,15 +19,11 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center h-96 bg-gray-100">
       {/* Welcome Text */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">
-          Welcome to Our Platform
-        </h1>
-        <p className="text-lg text-gray-600">
-          Please log in to access your personalized dashboard.
-        </p>
+        <h1 className="text-4xl font-bold text-gray-800 mb-4">Login Page</h1>
+        <p className="text-lg text-gray-600">Choose what you want to proceed</p>
       </div>
 
       {/* Login Button */}
