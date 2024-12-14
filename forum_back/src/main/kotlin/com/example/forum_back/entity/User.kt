@@ -1,9 +1,13 @@
 package com.example.forum_back.entity
 
+import jakarta.persistence.Entity
 import jakarta.persistence.GeneratedValue
 import jakarta.persistence.GenerationType.IDENTITY
 import jakarta.persistence.Id
+import jakarta.persistence.Table
 
+@Entity
+@Table(name = "users")
 class User (
     var email : String,
     var password: String,
