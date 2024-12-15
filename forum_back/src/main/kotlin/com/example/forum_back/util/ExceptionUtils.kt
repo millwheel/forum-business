@@ -3,8 +3,10 @@ package com.example.forum_back.util
 import org.springframework.data.repository.CrudRepository
 import org.springframework.data.repository.findByIdOrNull
 
-fun fail(): Nothing = throw IllegalArgumentException()
+fun <ID> fail(id: ID): Nothing {
+    throw IllegalArgumentException("entity not found (id: $id)")
+}
 
 fun <T, ID> CrudRepository<T, ID>.findByIdOrThrow(id: ID): T {
-    return this.findByIdOrNull(id) ?: fail()
+    return this.findByIdOrNull(id) ?: fail(id)
 }

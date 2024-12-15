@@ -28,4 +28,14 @@ class Forum constructor(
         this.description = forumUpdateRequest.description
     }
 
+    fun increaseLikes() {
+        this.likes++
+    }
+
+    fun decreaseLikes() {
+        if (this.likes > 0) {
+            this.likes--
+        }
+    }
+
 }

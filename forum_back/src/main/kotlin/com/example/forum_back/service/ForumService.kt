@@ -19,6 +19,7 @@ class ForumService (
     private val forumRepository : ForumRepository,
     private val userRepository : UserRepository
 ) {
+    private val userLikes: MutableMap<Long, MutableSet<Long>> = mutableMapOf()
 
     fun getAllForums(pageNumber: Int) : List<ForumSummaryResponse> {
         val pageable: Pageable = PageRequest.of(pageNumber, 10)
@@ -49,6 +50,18 @@ class ForumService (
         val forum = forumRepository.findByIdOrThrow(forumId)
         forum.updateForum(forumUpdateRequest)
         return forumRepository.save(forum)
+    }
+
+    fun addLike(forumId: Long, userId: Long) {
+        val user = userRepository.findByIdOrThrow(userId)
+        val forum = forumRepository.findByIdOrThrow(forumId)
+
+
+    }
+
+    fun removeLike(forumId: Long, userId: Long) {
+        val user = userRepository.findByIdOrThrow(userId)
+        val forum = forumRepository.findByIdOrThrow(forumId)
     }
 
     @Transactional
