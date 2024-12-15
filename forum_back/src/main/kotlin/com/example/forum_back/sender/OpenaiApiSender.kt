@@ -30,7 +30,7 @@ class OpenaiApiSender(
         return ChatCompletionRequest(
             model = "gpt-4o-mini",
             messages = listOf(
-                ChatMessage(role = "system", content = "You are professional translator. Translate the given text to english"),
+                ChatMessage(role = "system", content = "You are professional translator. Translate the given text to Korean, English and Japanese. Split the each text so that I can use."),
                 ChatMessage(role = "user", content = text)
             )
         )
