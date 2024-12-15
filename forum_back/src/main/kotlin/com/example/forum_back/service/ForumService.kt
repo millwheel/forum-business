@@ -53,6 +53,7 @@ class ForumService (
         return forumRepository.save(forum)
     }
 
+    @Transactional
     fun addLike(forumId: Long, userId: Long) {
         if (!userRepository.existsById(userId)) {
             throw RuntimeException("User Not Found")
@@ -66,6 +67,7 @@ class ForumService (
         }
     }
 
+    @Transactional
     fun removeLike(forumId: Long, userId: Long) {
         if (!userRepository.existsById(userId)) {
             throw RuntimeException("User Not Found")
