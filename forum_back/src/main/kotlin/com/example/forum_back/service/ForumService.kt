@@ -12,6 +12,7 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.util.concurrent.ConcurrentHashMap
 
 @Service
 @Transactional(readOnly = true)
@@ -19,7 +20,7 @@ class ForumService (
     private val forumRepository : ForumRepository,
     private val userRepository : UserRepository
 ) {
-    private val userLikes: MutableMap<Long, MutableSet<Long>> = mutableMapOf()
+    private val userLikes: MutableMap<Long, MutableSet<Long>> = ConcurrentHashMap()
 
     fun getAllForums(pageNumber: Int) : List<ForumSummaryResponse> {
         val pageable: Pageable = PageRequest.of(pageNumber, 10)
@@ -53,15 +54,29 @@ class ForumService (
     }
 
     fun addLike(forumId: Long, userId: Long) {
-        val user = userRepository.findByIdOrThrow(userId)
+        if (!userRepository.existsById(userId)) {
+            throw RuntimeException("User Not Found")
+        }
         val forum = forumRepository.findByIdOrThrow(forumId)
 
-
+        val likedForums = userLikes.getOrPut(userId) { mutableSetOf() }
+        if (!likedForums.contains(forumId)) {
+            forum.increaseLikes()
+            likedForums.add(forumId)
+        }
     }
 
     fun removeLike(forumId: Long, userId: Long) {
-        val user = userRepository.findByIdOrThrow(userId)
+        if (!userRepository.existsById(userId)) {
+            throw RuntimeException("User Not Found")
+        }
         val forum = forumRepository.findByIdOrThrow(forumId)
+
+        val likedForums = userLikes[userId]
+        if (likedForums != null && likedForums.contains(forumId)) {
+            forum.decreaseLikes()
+            likedForums.remove(forumId)
+        }
     }
 
     @Transactional
