@@ -15,7 +15,6 @@ class OpenaiApiSender(
         .build()
 
     fun sendTranslateRequest(text: String) {
-        println(openaiProperties.key)
         val result = restClient.post()
             .body(buildRequestBody(text))
             .retrieve()
@@ -31,7 +30,7 @@ class OpenaiApiSender(
         return ChatCompletionRequest(
             model = "gpt-4o-mini",
             messages = listOf(
-                ChatMessage(role = "system", content = "You are a helpful assistant."),
+                ChatMessage(role = "system", content = "You are professional translator. Translate the given text to english"),
                 ChatMessage(role = "user", content = text)
             )
         )
