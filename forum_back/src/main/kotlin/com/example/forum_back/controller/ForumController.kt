@@ -28,20 +28,20 @@ class ForumController(
         forumService.updateForum(forumId, forumUpdateRequest)
     }
 
-    @PostMapping("/{id}/likes")
+    @PostMapping("/{forumId}/likes")
     fun increaseLikes(
-        @PathVariable id: Long,
+        @PathVariable forumId: Long,
         @RequestHeader("X-User-Id") userId: Long
     ) {
-        forumService.addLike(id, userId)
+        forumService.addLike(forumId, userId)
     }
 
-    @DeleteMapping("/{id}/likes")
+    @DeleteMapping("/{forumId}/likes")
     fun decreaseLikes(
-        @PathVariable id: Long,
+        @PathVariable forumId: Long,
         @RequestHeader("X-User-Id") userId: Long
     ) {
-        forumService.removeLike(id, userId)
+        forumService.removeLike(forumId, userId)
     }
 
     @DeleteMapping("/{forumId}")
