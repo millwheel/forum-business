@@ -6,7 +6,8 @@ import com.example.forum_back.entity.forum.Forum
 class ForumSummaryResponse(
     val id: Long,
     val title: String,
-    val author: String
+    val author: String,
+    val likes: Int
 ) {
 
     companion object{
@@ -14,7 +15,8 @@ class ForumSummaryResponse(
             return ForumSummaryResponse(
                 id = forum.id!!,
                 title = forum.title,
-                author = user.name
+                author = user.name,
+                likes = forum.likes,
             )
         }
     }

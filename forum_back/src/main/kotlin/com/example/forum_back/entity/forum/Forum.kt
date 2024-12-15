@@ -11,6 +11,7 @@ class Forum constructor(
     var title: String,
     var description: String,
     var authorId: Long,
+    var likes: Int,
     @Id
     @GeneratedValue(strategy = IDENTITY)
     val id: Long? = null

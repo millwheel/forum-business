@@ -7,7 +7,8 @@ data class ForumResponse (
     val id: Long,
     val title: String,
     val description: String,
-    val author: String
+    val author: String,
+    val likes: Int
 ) {
 
     companion object {
@@ -16,7 +17,8 @@ data class ForumResponse (
                 id = forum.id!!,
                 title = forum.title,
                 description = forum.description,
-                author = user.name
+                author = user.name,
+                likes = forum.likes
             )
         }
     }

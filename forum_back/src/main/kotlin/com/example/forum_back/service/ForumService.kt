@@ -8,7 +8,6 @@ import com.example.forum_back.entity.forum.Forum
 import com.example.forum_back.repository.ForumRepository
 import com.example.forum_back.repository.UserRepository
 import com.example.forum_back.util.findByIdOrThrow
-import org.springframework.data.domain.Page
 import org.springframework.data.domain.PageRequest
 import org.springframework.data.domain.Pageable
 import org.springframework.stereotype.Service
@@ -41,7 +40,7 @@ class ForumService (
         if(!userRepository.existsById(forumCreateRequest.authorId)){
             throw RuntimeException("User Not Found")
         }
-        val newForum = Forum(forumCreateRequest.title, forumCreateRequest.description, forumCreateRequest.authorId)
+        val newForum = Forum(forumCreateRequest.title, forumCreateRequest.description, forumCreateRequest.authorId, 0)
         return forumRepository.save(newForum)
     }
 
